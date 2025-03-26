@@ -67,7 +67,7 @@ To start using this template, you need to have some prerequisites installed on y
 
 ### 👉 Install Dependencies
 
-Install all the dependencies using the following command.
+Install all the dependencies using the following command inside logicshift-website root directory.
 
 ```bash
 npm install
@@ -80,11 +80,6 @@ Start the development server using the following command.
 ```bash
 npm run dev
 ```
-
-### 🎬 Still Confused? Watch a Quick Video
-
-https://github.com/zeon-studio/hugoplate/assets/58769763/c260c0ae-91be-42ce-b8db-aa7f11f777bd
-
 ---
 
 ## 📝 Customization
