@@ -1,0 +1,13 @@
+{
+    "clients": [
+      { "icon": "images/1.png" },
+      { "icon": "images/2.png" },
+      { "icon": "images/3.png" },
+      { "icon": "images/4.png" },
+      { "icon": "images/5.png" },
+      { "icon": "images/6.png" },
+      { "icon": "images/7.png" },
+      { "icon": "images/8.png" }
+    ]
+  }
+  

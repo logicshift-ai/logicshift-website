@@ -1,0 +1,26 @@
+    <div class="container mt-8">
+  
+        <div class="relative w-full">
+            <div class="flex animate-marquee min-w-full space-x-10 items-center">          
+          {{ range .Site.Data.clients.clients }}
+          <div class="shrink-0 flex items-center justify-center h-20 w-24 md:h-24 md:w-28 rounded-xl shadow-sm bg-[#EBF9F5] dark:bg-[#1f3d34] p-2">
+            <img
+              src="{{ .icon | absURL }}"
+              alt="Client Logo"
+              class="max-h-12 md:max-h-16 object-contain opacity-80 hover:opacity-100 transition duration-300"
+            />
+          </div>
+          {{ end }}
+  
+          {{ range .Site.Data.clients.clients }}
+          <div class="shrink-0 flex items-center justify-center h-20 w-24 md:h-24 md:w-28 rounded-xl shadow-sm bg-[#EBF9F5] dark:bg-[#1f3d34] p-2">
+            <img
+              src="{{ .icon | absURL }}"
+              alt="Client Logo"
+              class="max-h-12 md:max-h-16 object-contain opacity-80 hover:opacity-100 transition duration-300"
+            />
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>

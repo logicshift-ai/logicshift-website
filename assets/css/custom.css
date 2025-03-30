@@ -6,3 +6,36 @@
            shadow-md 
            transition-all duration-300;
   }
+
+  @keyframes marquee {
+    0%   { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  .animate-marquee {
+    animation: marquee 15s linear infinite;
+    display: flex;
+    width: max-content;
+    will-change: transform;
+  }
+  
+  
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+  
+  .section-xs {
+    @apply py-10 ;
+  }
+
+  .section {
+    @apply py-12 xl:pt-8 pb-24 xl:pb-28;
+  }
+
+  .swiper-slide {
+    transition: transform 0.3s ease;
+  }
+  .swiper-slide-active {
+    transform: scale(1.00);
+  }
+ 

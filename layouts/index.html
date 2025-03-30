@@ -1,157 +1,252 @@
 {{ define "main" }}
-  <!-- Banner -->
-  {{ with .Params.banner }}
-  <section class="section pt-14">
-    <div class="container">
-      <div class="row justify-center items-center lg:flex lg:flex-row lg:items-center lg:justify-between">
-        <!-- Text content -->
-        <div class="lg:w-1/2 mb-8 text-center lg:text-left">
-          <h1 class="text-[color:#0E2A1F] dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-teal-400 dark:to-gray-400 text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-6 pb-1">
-            {{ .title | markdownify }}
-          </h1>          
 
-          <p class="mb-8">
-            {{ .content | markdownify }}
+<!-- Banner -->
+{{ with .Params.banner }}
+<section class="section flex items-center min-h-screen">
+  <div class="container">
+    <div class="flex flex-col xl:flex-row items-center justify-between gap-12">
+      <!-- Text content -->
+      <div class="w-full xl:w-1/2 text-center xl:text-left">
+        <h1 class="text-[#0E2A1F] dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-teal-400 dark:to-gray-400 text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-6">
+          {{ .title | markdownify }}
+        </h1>
+        <p class="mb-8 text-base md:text-lg text-gray-700 dark:text-gray-300">
+          {{ .content | markdownify }}
+        </p>
+
+        {{ with .button }}
+          {{ if .enable }}
+            <a
+              class="btn btn-primary inline-flex items-center gap-2"
+              href="{{ .link | absURL }}"
+              {{ if strings.HasPrefix .link `http` }}target="_blank" rel="noopener"{{ end }}>
+              {{ .label }}
+              <i class="fa fa-arrow-right"></i>
+            </a>
+          {{ end }}
+        {{ end }}
+      </div>
+
+      <!-- Image -->
+      <div class="w-full xl:w-1/2">
+        {{ partial "image" (dict
+          "Src" .image
+          "Alt" "Banner image"
+          "Loading" "eager"
+          "Class" "mx-auto w-full max-w-3xl h-auto"
+          "Resize" "1600x"
+          "Quality" "90"
+          "Format" "WebP"
+        ) }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+<!-- /Banner -->
+
+<!-- Marquee -->
+{{ with .Params.marquee }}
+<section class="section bg-[#f5fff9] dark:bg-[#152720] bg-gradient overflow-hidden">
+  <!-- Title & Content -->
+  <div class="container mb-8">
+    <div class="row justify-center">
+      <div class="xl:col-7 md:col-9 text-center">
+        {{ with .title }}
+          <h2 class="mb-4 text-h3 xl:text-h2">
+            {{ . | markdownify }}
+          </h2>
+        {{ end }}
+
+        {{ with .content }}
+          <p class="mb-6">
+            {{ . | markdownify }}
           </p>
-          {{ with .button }}
-            {{ if .enable }}
-              <a
-                class="btn btn-primary"
-                href="{{ .link | absURL }}"
-                {{ if strings.HasPrefix .link `http` }}
-                  target="_blank" rel="noopener"
-                {{ end }}>
-                {{ .label }}
-                <i class="fa fa-arrow-right pl-2"></i>
-              </a>
-            {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Marquee Partial -->
+  {{ partial "components/odoo-marquee.html" $ }}
+
+  <!-- Button -->
+  {{ with .button }}
+    {{ if .enable }}
+      <div class="container mt-8">
+        <div class="row justify-center">
+          <div class="text-center">
+            <a
+              class="btn btn-primary"
+              href="{{ .link | absURL }}"
+              {{ if strings.HasPrefix .link `http` }}target="_blank" rel="noopener"{{ end }}>
+              {{ .label }}
+              <i class="fa fa-arrow-right pl-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    {{ end }}
+  {{ end }}
+</section>
+{{ end }}
+<!-- /Marquee -->
+
+
+<!-- Services -->
+{{ with .Params.services }}
+  {{ if .enable }}
+    <section class="section bg-gradient-to-b from-white via-[#f3fdf9] to-white dark:from-[#0F1A17] dark:via-[#12231C] dark:to-[#0F1A17]">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-extrabold text-[#0E2A1F] dark:text-white leading-tight">
+            {{ .title }}
+          </h2>
+          <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-700 dark:text-gray-300">
+            {{ .content }}
+          </p>
+        </div>
+
+        <!-- Grid layout for large screens -->
+        <div class="hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          {{ range .items }}
+            <div class="group relative p-8 rounded-3xl bg-white dark:bg-[#1C2E27] shadow-xl hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-[#00C776]/30">
+              <!-- Icon -->
+              <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-4xl text-[#00C776] bg-[#E8FDF3] dark:bg-[#213B33] rounded-full shadow-inner transition-transform group-hover:scale-110">
+                <i class="fa {{ .icon }}"></i>
+              </div>
+
+              <!-- Content -->
+              <h3 class="text-xl font-semibold text-[#0E2A1F] dark:text-white mb-3">
+                {{ .title }}
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
+                {{ .description }}
+              </p>
+
+              <!-- Glow on hover -->
+              <div class="absolute -inset-px rounded-3xl bg-gradient-to-br from-[#00C776]/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none"></div>
+            </div>
           {{ end }}
         </div>
 
-        <!-- Image -->
-        <div class="lg:w-1/2">
-          {{ partial "image" (dict
-            "Src" .image
-            "Alt" "Banner image"
-            "Loading" "eager"
-            "Class" "mx-auto w-full max-w-3xl h-auto"
-            "Resize" "1600x"
-            "Quality" "90"
-            "Format" "WebP"
-          ) }}
-        </div>
-      </div>
-    </div>
-  </section>
-{{ end }}
-
-  <!-- /Banner -->
-
-  <!-- Features -->
-  {{ range $i, $e:= .Params.features }}
-    <section class="section-sm {{ if (modBool $i 2) }}bg-gradient{{ end }}">
-      <div class="container">
-        <div class="row items-center justify-between">
-          <div
-            class="mb:md-0 {{ if not (modBool $i 2) }}
-              md:order-2
-            {{ end }} md:col-5 mb-6">
-            {{ partial "image" (dict "Src" .image "Alt" "feature image" "DisplayXL" "520x" "DisplayLG" "425x" "DisplayMD" "360x") }}
-          </div>
-          <div
-            class="{{ if not (modBool $i 2) }}
-              md:order-1
-            {{ end }} md:col-7 lg:col-6">
-            <h2 class="mb-4">
-              {{ .title | markdownify }}
-            </h2>
-            <p class="mb-8 text-lg">
-              {{ .content | markdownify }}
-            </p>
-            <ul>
-              {{ range .bulletpoints }}
-                <li class="relative mb-4 pl-6">
-                  <i class="fa fa-check absolute left-0 top-1.5"></i>
-                  {{ . | markdownify }}
-                </li>
+        <!-- Swiper Carousel for mobile and tablets -->
+        <div class="lg:hidden">
+          <div class="swiper testimonial-slider">
+            <div class="swiper-wrapper">
+              {{ range .items }}
+                <div class="swiper-slide">
+                  <div class="p-6 rounded-3xl bg-white dark:bg-[#1C2E27] shadow-lg hover:shadow-xl transition-all duration-300 text-center border border-[#e6f8f0] dark:border-[#1f3c33]">
+                    <div class="w-14 h-14 mx-auto mb-4 flex items-center justify-center text-3xl text-[#00C776] bg-[#E8FDF3] dark:bg-[#213B33] rounded-full shadow-inner">
+                      <i class="fa {{ .icon }}"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-[#0E2A1F] dark:text-white mb-2">
+                      {{ .title }}
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                      {{ .description }}
+                    </p>
+                  </div>
+                </div>
               {{ end }}
-            </ul>
-            {{ with .button }}
-              {{ if .enable }}
-                <a class="btn btn-primary mt-6" href="{{ .link | absURL }}">
-                  {{ .label }}
-                  <i class="fa fa-arrow-right pl-2"></i>
-                </a>
-              {{ end }}
-            {{ end }}
+            </div>
+            <!-- Pagination -->
+            <div class="testimonial-slider-pagination mt-6 flex justify-center"></div>
           </div>
         </div>
       </div>
     </section>
   {{ end }}
-  <!-- /Features -->
+{{ end }}
 
-  <!-- Testimonials -->
-  {{ with site.GetPage "sections/testimonial" }}
-    {{ if .Params.enable }}
-      <section class="section">
-        <div class="container">
-          <div class="row">
-            <div class="md:col-10 lg:col-8 xl:col-6 mx-auto mb-12 text-center">
-              <h2 class="mb-4">
-                {{ .Title | markdownify }}
-              </h2>
-              <p>
-                {{ .Params.description | markdownify }}
-              </p>
-            </div>
-            <div class="col-12">
-              <div class="swiper testimonial-slider">
-                <div class="swiper-wrapper">
-                  {{ range .Params.testimonials }}
-                    <div class="swiper-slide">
-                      <div
-                        class="bg-light dark:bg-darkmode-light rounded-lg px-7 py-10">
+<!-- /Services -->
+
+
+<!-- Features -->
+{{ range $i, $e := .Params.features }}
+<section class="section-sm {{ if (modBool $i 2) }}bg-gradient{{ end }}">
+  <div class="container">
+    <div class="row items-center justify-between">
+      <div class="mb:md-0 {{ if not (modBool $i 2) }}md:order-2{{ end }} md:col-5 mb-6">
+        {{ partial "image" (dict "Src" .image "Alt" "feature image" "DisplayXL" "520x" "DisplayLG" "425x" "DisplayMD" "360x") }}
+      </div>
+      <div class="{{ if not (modBool $i 2) }}md:order-1{{ end }} md:col-7 xl:col-6">
+        <h2 class="mb-4">{{ .title | markdownify }}</h2>
+        <p class="mb-8 text-lg">{{ .content | markdownify }}</p>
+        <ul>
+          {{ range .bulletpoints }}
+            <li class="relative mb-4 pl-6">
+              <i class="fa fa-check absolute left-0 top-1.5"></i>
+              {{ . | markdownify }}
+            </li>
+          {{ end }}
+        </ul>
+        {{ with .button }}
+          {{ if .enable }}
+            <a class="btn btn-primary mt-6" href="{{ .link | absURL }}">
+              {{ .label }}
+              <i class="fa fa-arrow-right pl-2"></i>
+            </a>
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+<!-- /Features -->  
+
+
+<!-- Testimonials -->
+{{ with site.GetPage "sections/testimonial" }}
+  {{ if .Params.enable }}
+    <section class="section">
+      <div class="container">
+        <div class="row">
+          <div class="md:col-10 xl:col-8 xl:col-6 mx-auto mb-12 text-center">
+            <h2 class="mb-4">{{ .Title | markdownify }}</h2>
+            <p>{{ .Params.description | markdownify }}</p>
+          </div>
+
+          <div class="col-12">
+            <div class="swiper testimonial-slider">
+              <div class="swiper-wrapper">
+                {{ range .Params.testimonials }}
+                  <div class="swiper-slide">
+                    <div class="bg-light dark:bg-darkmode-light rounded-lg px-7 py-10">
+                      <div class="text-text-dark dark:text-white">
+                        <svg width="33" height="20" viewBox="0 0 33 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1.28375 19.41L0.79375 18.64C1.21375 17.0067 1.75042 15.07 2.40375 12.83C3.05708 10.5433 3.75708 8.28 4.50375 6.04C5.29708 3.75333 6.06708 1.77 6.81375 0.0899959H15.3538C14.9338 2.09666 14.4904 4.26667 14.0238 6.6C13.5571 8.88666 13.1371 11.15 12.7638 13.39C12.4371 15.5833 12.1571 17.59 11.9238 19.41H1.28375ZM31.69 0.0899959L32.18 0.859998C31.76 2.54 31.2233 4.5 30.57 6.74C29.9167 8.98 29.2167 11.2433 28.47 13.53C27.7233 15.77 26.9533 17.73 26.16 19.41H17.69C18.0167 17.9167 18.3433 16.33 18.67 14.65C18.9967 12.9233 19.3 11.22 19.58 9.54C19.9067 7.81333 20.1867 6.15667 20.42 4.57C20.7 2.93666 20.91 1.44333 21.05 0.0899959H31.69Z" fill="currentColor" />
+                        </svg>
+                      </div>
+
+                      <blockquote class="mt-8">{{ .content | markdownify }}</blockquote>
+
+                      <div class="mt-11 flex items-center">
                         <div class="text-text-dark dark:text-white">
-                          <svg
-                            width="33"
-                            height="20"
-                            viewBox="0 0 33 20"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                              d="M1.28375 19.41L0.79375 18.64C1.21375 17.0067 1.75042 15.07 2.40375 12.83C3.05708 10.5433 3.75708 8.28 4.50375 6.04C5.29708 3.75333 6.06708 1.77 6.81375 0.0899959H15.3538C14.9338 2.09666 14.4904 4.26667 14.0238 6.6C13.5571 8.88666 13.1371 11.15 12.7638 13.39C12.4371 15.5833 12.1571 17.59 11.9238 19.41H1.28375ZM31.69 0.0899959L32.18 0.859998C31.76 2.54 31.2233 4.5 30.57 6.74C29.9167 8.98 29.2167 11.2433 28.47 13.53C27.7233 15.77 26.9533 17.73 26.16 19.41H17.69C18.0167 17.9167 18.3433 16.33 18.67 14.65C18.9967 12.9233 19.3 11.22 19.58 9.54C19.9067 7.81333 20.1867 6.15667 20.42 4.57C20.7 2.93666 20.91 1.44333 21.05 0.0899959H31.69Z"
-                              fill="currentColor" />
-                          </svg>
+                          {{ partial "image" (dict "Src" .avatar "Size" "50x50" "Class" "rounded-full" "Alt" .name) }}
                         </div>
-                        <blockquote class="mt-8">
-                          {{ .content | markdownify }}
-                        </blockquote>
-                        <div class="mt-11 flex items-center">
-                          <div class="text-text-dark dark:text-white">
-                            {{ partial "image" (dict "Src" .avatar "Size" "50x50" "Class" "rounded-full" "Alt" .name) }}
-                          </div>
-                          <div class="ml-4">
-                            <h3 class="h5 font-primary font-semibold">
-                              {{ .name }}
-                            </h3>
-                            <p class="text-text-dark dark:text-white">
-                              {{ .designation | markdownify }}
-                            </p>
-                          </div>
+                        <div class="ml-4">
+                          <h3 class="h5 font-primary font-semibold">{{ .name }}</h3>
+                          <p class="text-text-dark dark:text-white">{{ .designation | markdownify }}</p>
                         </div>
                       </div>
                     </div>
-                  {{ end }}
-                </div>
-                <div
-                  class="testimonial-slider-pagination mt-9 flex items-center justify-center text-center"></div>
+                  </div>
+                {{ end }}
               </div>
+              <div class="testimonial-slider-pagination mt-9 flex items-center justify-center text-center"></div>
             </div>
           </div>
         </div>
-      </section>
-    {{ end }}
+      </div>
+    </section>
   {{ end }}
-  <!-- /Testimonials -->
 {{ end }}
+<!-- /Testimonials -->
+
+
+
+{{ end }}
+
