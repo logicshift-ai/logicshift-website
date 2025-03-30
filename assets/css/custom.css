@@ -25,7 +25,7 @@
   }
   
   .section-xs {
-    @apply py-10 ;
+    @apply py-4;
   }
 
   .section {

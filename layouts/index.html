@@ -10,7 +10,7 @@
         <h1 class="text-[#0E2A1F] dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-teal-400 dark:to-gray-400 text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-6">
           {{ .title | markdownify }}
         </h1>
-        <p class="mb-8 text-base md:text-lg text-gray-700 dark:text-gray-300">
+        <p class="mb-8 text-xl">
           {{ .content | markdownify }}
         </p>
 
@@ -51,7 +51,7 @@
   <!-- Title & Content -->
   <div class="container mb-8">
     <div class="row justify-center">
-      <div class="xl:col-7 md:col-9 text-center">
+      <div class="mb-4 text-center">
         {{ with .title }}
           <h2 class="mb-4 text-h3 xl:text-h2">
             {{ . | markdownify }}
@@ -59,7 +59,7 @@
         {{ end }}
 
         {{ with .content }}
-          <p class="mb-6">
+          <p class="mb-8 text-lg">
             {{ . | markdownify }}
           </p>
         {{ end }}
@@ -100,10 +100,10 @@
       <div class="container">
         <!-- Section Header -->
         <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-extrabold text-[#0E2A1F] dark:text-white leading-tight">
+          <h2 class="mb-4">
             {{ .title }}
           </h2>
-          <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-700 dark:text-gray-300">
+          <p class="mb-8 text-lg">
             {{ .content }}
           </p>
         </div>
@@ -118,10 +118,10 @@
               </div>
 
               <!-- Content -->
-              <h3 class="text-xl font-semibold text-[#0E2A1F] dark:text-white mb-3">
+              <h3 class="mb-2 text-center">
                 {{ .title }}
               </h3>
-              <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
+              <p class="trelative mb-4 pl-6 text-center">
                 {{ .description }}
               </p>
 
@@ -141,10 +141,10 @@
                     <div class="w-14 h-14 mx-auto mb-4 flex items-center justify-center text-3xl text-[#00C776] bg-[#E8FDF3] dark:bg-[#213B33] rounded-full shadow-inner">
                       <i class="fa {{ .icon }}"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-[#0E2A1F] dark:text-white mb-2">
+                    <h3 class="mb-2 text-center">
                       {{ .title }}
                     </h3>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                    <p class="relative mb-4 pl-6 text-center">
                       {{ .description }}
                     </p>
                   </div>
@@ -196,6 +196,10 @@
 </section>
 {{ end }}
 <!-- /Features -->  
+<section class="section-xs mt-0 overflow-hidden">
+ <!-- Marquee Partial -->
+ {{ partial "components/odoo-marquee.html" $ }}
+</section>
 
 
 <!-- Testimonials -->
@@ -221,7 +225,7 @@
                         </svg>
                       </div>
 
-                      <blockquote class="mt-8">{{ .content | markdownify }}</blockquote>
+                      <blockquote class="mb-8 text-lg">{{ .content | markdownify }}</blockquote>
 
                       <div class="mt-11 flex items-center">
                         <div class="text-text-dark dark:text-white">

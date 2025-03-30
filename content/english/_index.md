@@ -58,6 +58,7 @@ services:
 
 
 # Features
+
 features:
   - title: "The Top Reasons to Choose LogicShift for Your Odoo Project"
     image: "/images/feature.png"
@@ -72,4 +73,19 @@ features:
       enable: false
       label: ""
       link: ""
+
+  - title: "The Top Reasons to Choose LogicShift for Your Odoo Project"
+    image: "/images/feature.png"
+    content: "At LogicShift, we specialize in delivering tailored Odoo solutions that streamline operations, boost productivity, and scale with your business needs. Whether you're just getting started or need complex customization, we're your trusted Odoo partner."
+    bulletpoints:
+      - "Expert team with deep knowledge of Odoo modules and business workflows."
+      - "Fast, reliable implementations customized for your industry."
+      - "End-to-end support: from planning and development to deployment and training."
+      - "Seamless integration with third-party tools, APIs, and legacy systems."
+      - "Scalable and future-proof solutions built for long-term success."
+    button:
+      enable: false
+      label: ""
+      link: ""
+    
 ---
