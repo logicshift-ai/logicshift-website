@@ -45,58 +45,12 @@
 {{ end }}
 <!-- /Banner -->
 
-<!-- Marquee -->
-{{ with .Params.marquee }}
-<section class="section bg-[#f5fff9] dark:bg-[#152720] bg-gradient overflow-hidden">
-  <!-- Title & Content -->
-  <div class="container mb-8">
-    <div class="row justify-center">
-      <div class="mb-4 text-center">
-        {{ with .title }}
-          <h2 class="mb-4 text-h3 xl:text-h2">
-            {{ . | markdownify }}
-          </h2>
-        {{ end }}
-
-        {{ with .content }}
-          <p class="mb-8 text-lg">
-            {{ . | markdownify }}
-          </p>
-        {{ end }}
-      </div>
-    </div>
-  </div>
-
-  <!-- Marquee Partial -->
-  {{ partial "components/odoo-marquee.html" $ }}
-
-  <!-- Button -->
-  {{ with .button }}
-    {{ if .enable }}
-      <div class="container mt-8">
-        <div class="row justify-center">
-          <div class="text-center">
-            <a
-              class="btn btn-primary"
-              href="{{ .link | absURL }}"
-              {{ if strings.HasPrefix .link `http` }}target="_blank" rel="noopener"{{ end }}>
-              {{ .label }}
-              <i class="fa fa-arrow-right pl-2"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    {{ end }}
-  {{ end }}
-</section>
-{{ end }}
-<!-- /Marquee -->
-
 
 <!-- Services -->
+
 {{ with .Params.services }}
   {{ if .enable }}
-    <section class="section bg-gradient-to-b from-white via-[#f3fdf9] to-white dark:from-[#0F1A17] dark:via-[#12231C] dark:to-[#0F1A17]">
+    <section class="section bg-gradient">
       <div class="container">
         <!-- Section Header -->
         <div class="text-center mb-16">
@@ -111,21 +65,33 @@
         <!-- Grid layout for large screens -->
         <div class="hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {{ range .items }}
-            <div class="group relative p-8 rounded-3xl bg-white dark:bg-[#1C2E27] shadow-xl hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-[#00C776]/30">
+            <div class="group relative flex flex-col p-8 rounded-3xl bg-white dark:bg-[#1C2E27] shadow-xl hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-[#00C776]/30">
+              
               <!-- Icon -->
               <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-4xl text-[#00C776] bg-[#E8FDF3] dark:bg-[#213B33] rounded-full shadow-inner transition-transform group-hover:scale-110">
                 <i class="fa {{ .icon }}"></i>
               </div>
 
-              <!-- Content -->
+              <!-- Title & Description -->
               <h3 class="mb-2 text-center">
                 {{ .title }}
               </h3>
-              <p class="trelative mb-4 pl-6 text-center">
+              <p class="relative mb-4 pl-6 text-center">
                 {{ .description }}
               </p>
 
-              <!-- Glow on hover -->
+              <!-- Button at bottom -->
+              {{ with .button }}
+                {{ if .enable }}
+                  <div class="mt-auto pt-4 text-center">
+                    <a href="{{ .link }}" class="btn btn-primary text-sm px-4 py-2">
+                      {{ .label }}
+                    </a>
+                  </div>
+                {{ end }}
+              {{ end }}
+
+              <!-- Glow -->
               <div class="absolute -inset-px rounded-3xl bg-gradient-to-br from-[#00C776]/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none"></div>
             </div>
           {{ end }}
@@ -136,21 +102,39 @@
           <div class="swiper testimonial-slider">
             <div class="swiper-wrapper">
               {{ range .items }}
-                <div class="swiper-slide">
-                  <div class="p-6 rounded-3xl bg-white dark:bg-[#1C2E27] shadow-lg hover:shadow-xl transition-all duration-300 text-center border border-[#e6f8f0] dark:border-[#1f3c33]">
-                    <div class="w-14 h-14 mx-auto mb-4 flex items-center justify-center text-3xl text-[#00C776] bg-[#E8FDF3] dark:bg-[#213B33] rounded-full shadow-inner">
+                <div class="swiper-slide h-full">
+                  <div class="flex flex-col h-full min-h-[380px] p-6 rounded-3xl bg-white dark:bg-[#1C2E27] shadow-lg hover:shadow-xl transition-all duration-300 text-center border border-[#e6f8f0] dark:border-[#1f3c33]">
+                    
+                    <!-- Icon -->
+                    <div class="w-14 h-14 mb-6 mx-auto flex items-center justify-center text-3xl text-[#00C776] bg-[#E8FDF3] dark:bg-[#213B33] rounded-full shadow-inner">
                       <i class="fa {{ .icon }}"></i>
                     </div>
-                    <h3 class="mb-2 text-center">
-                      {{ .title }}
-                    </h3>
-                    <p class="relative mb-4 pl-6 text-center">
-                      {{ .description }}
-                    </p>
+
+                    <!-- Content -->
+                    <div>
+                      <h3 class="mb-2 text-center">
+                        {{ .title }}
+                      </h3>
+                      <p class="text-center mb-4">
+                        {{ .description }}
+                      </p>
+                    </div>
+
+                    <!-- Button at bottom -->
+                    {{ with .button }}
+                      {{ if .enable }}
+                        <div class="mt-auto pt-4 text-center">
+                          <a href="{{ .link }}" class="btn btn-primary text-sm px-4 py-2">
+                            {{ .label }}
+                          </a>
+                        </div>
+                      {{ end }}
+                    {{ end }}
                   </div>
                 </div>
               {{ end }}
             </div>
+
             <!-- Pagination -->
             <div class="testimonial-slider-pagination mt-6 flex justify-center"></div>
           </div>
@@ -159,6 +143,8 @@
     </section>
   {{ end }}
 {{ end }}
+
+
 
 <!-- /Services -->
 
