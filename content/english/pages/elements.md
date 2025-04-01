@@ -256,3 +256,27 @@ flowchart TD
 ### Custom video
 
 {{< video src="https://www.w3schools.com/html/mov_bbb.mp4" width="100%" height="auto" autoplay="false" loop="false" muted="false" controls="true" class="rounded-lg" >}}
+
+### Timeline 
+
+{{< timeline >}}
+
+date: 2020
+title: Started LogicShift
+description: Began helping small businesses adopt modern technology.
+icon: fa-rocket
+---
+date: 2021
+title: Built our first Odoo integration
+description: Customized Odoo to help a client automate their order-to-cash process.
+icon: fa-plug
+---
+date: 2024
+title: Launched AI-enabled dashboards
+description: Introduced smart reports using AI for our retail clients.
+icon: fa-brain
+{{< /timeline >}}
+
+
+
+

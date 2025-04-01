@@ -1,0 +1,34 @@
+<div class="relative max-w-5xl mx-auto py-12">
+    <!-- Vertical line: left on mobile, center on desktop -->
+    <div class="absolute top-0 bottom-0 left-[28px] w-0.5 bg-gray-300 dark:bg-gray-700 lg:left-1/2 lg:-translate-x-1/2"></div>
+  
+    {{ $raw := .Inner | plainify }}
+    {{ range $index, $block := (split $raw "\n---\n") }}
+      {{ $data := $block | transform.Unmarshal }}
+      {{ $isRight := modBool $index 2 }}
+  
+      <div class="relative mb-16 lg:flex lg:items-start {{ if $isRight }}lg:flex-row-reverse{{ end }}">
+        <!-- Icon -->
+        <div class="absolute top-0 left-[12px] lg:left-1/2 lg:-translate-x-1/2">
+          <div class="w-10 h-10 flex items-center justify-center text-lg text-[#00C776] bg-[#E8FDF3] dark:bg-[#213B33] rounded-full shadow-inner border-4 border-white dark:border-gray-900">
+            <i class="fa {{ $data.icon }}"></i>
+          </div>
+        </div>
+  
+        <!-- Card Container -->
+        <div class="flex flex-col lg:w-1/2 px-6 {{ if $isRight }}lg:pl-12{{ else }}lg:pr-12{{ end }}">
+          <!-- Year -->
+          <div class="mb-2 mt-12 lg:mt-0 text-sm font-medium text-gray-500 dark:text-gray-400">
+            {{ $data.date }}
+          </div>
+  
+          <!-- Card -->
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">{{ $data.title }}</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-base leading-relaxed">{{ $data.description }}</p>
+          </div>
+        </div>
+      </div>
+    {{ end }}
+  </div>
+  

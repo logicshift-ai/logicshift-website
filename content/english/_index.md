@@ -68,7 +68,7 @@ services:
 
 features:
   - title: "Why Odoo for Small and Medium Businesses"
-    image: "/images/odoo_2.png"
+    image: "/images/Odoo_1.svg"
     content: "Odoo provides a customizable solution to meet all your operational needs — and it grows with your business. It's the perfect blend of power, affordability, and flexibility for small and mid-sized businesses looking to modernize their operations."
     bulletpoints:
       - "**Comprehensive**: Enterprise-level apps for Sales, Operations, Finance, Marketing, Ecommerce, and more — all in one place."
@@ -83,7 +83,7 @@ features:
       link: ""
 
   - title: "Business Software Solutions That Empower Growth"
-    image: "/images/odoo_1.png"
+    image: "/images/Odoo_2.svg"
     content: "Take full control of your business operations with powerful, web-based Odoo applications. At LogicShift, we deliver customized ERP solutions that streamline everything from sales and marketing to inventory and team collaboration — all in one integrated platform."
     bulletpoints:
       - "Automate daily tasks to save time and reduce manual work."
@@ -98,7 +98,7 @@ features:
       link: ""
 
   - title: "The Top Reasons to Choose LogicShift for Your Odoo Project"
-    image: "/images/feature.png"
+    image: "/images/Odoo_3.svg"
     content: "At LogicShift, we specialize in delivering tailored Odoo solutions that streamline operations, boost productivity, and scale with your business needs. Whether you're just getting started or need complex customization, we're your trusted Odoo partner."
     bulletpoints:
       - "Expert team with deep knowledge of Odoo modules and business workflows."

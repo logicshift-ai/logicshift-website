@@ -1,0 +1,20 @@
+{
+    "badges": [
+      {
+        "image": "/images/OCA-Member.png",
+        "alt": "OCA Member 2025",
+        "link": "https://odoo-community.org"
+      },
+      {
+        "image": "/images/odoo_community_member.svg",
+        "alt": "OCA Member 2025",
+        "link": "https://odoo-community.org"
+      },
+      {
+        "image": "/images/odoo_learning_partner.svg",
+        "alt": "OCA Member 2025",
+        "link": "https://odoo-community.org"
+      }
+    ]
+  }
+  

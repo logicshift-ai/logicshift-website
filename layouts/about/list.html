@@ -1,0 +1,56 @@
+{{ define "main" }}
+<section class="bg-white dark:bg-[#0F1A17] py-16">
+  <div class="container mx-auto px-6">
+
+    <!-- Hero Section -->
+<div class="max-w-3xl mx-auto">
+    <!-- Image and Title Centered -->
+    <div class="text-center">
+      {{ with .Params.image }}
+        {{ partial "image" (dict "Src" . "Context" $.Page "Alt" $.Title "Class" "mx-auto mb-6 rounded-full shadow-md" "Size" "200x200") }}
+      {{ end }}
+      <h1 class="text-4xl font-extrabold text-gray-900 dark:text-[#d8fce7] mb-4">{{ .Title }}</h1>
+    </div>
+  
+    <!-- Subtitle Justified and Left-Aligned -->
+    {{ with .Params.subtitle }}
+      <p class="mb-4 text-center">
+        {{ . }}
+      </p>
+    {{ end }}
+ 
+  
+      
+
+    <!-- Main Markdown Body First -->
+    <div class="mt-10">
+        <div class="prose prose-lg dark:prose-invert text-justify">
+          {{ .Content }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid Content Sections -->
+    {{ with .Params.sections }}
+    <div class="grid gap-10 mt-16 md:grid-cols-2 max-w-5xl mx-auto text-gray-800 dark:text-gray-200">
+      {{ range . }}
+        <div class="bg-gray-50 dark:bg-[#13211d] p-6 rounded-2xl shadow-md hover:shadow-lg transition">
+          <h2 class="text-2xl font-semibold text-primary mb-3">{{ .title }}</h2>
+          {{ if .content }}
+            <p class="leading-relaxed">{{ .content | markdownify }}</p>
+          {{ end }}
+          {{ if .list }}
+            <ul class="list-disc pl-5 space-y-2 mt-2">
+              {{ range .list }}
+                <li>{{ . }}</li>
+              {{ end }}
+            </ul>
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+    {{ end }}
+
+  </div>
+</section>
+{{ end }}

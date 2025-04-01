@@ -3,17 +3,17 @@
     {
       "name": "facebook",
       "icon": "fab fa-facebook",
-      "link": "https://www.facebook.com/"
+      "link": "https://www.facebook.com/share/1BRwijAKEA/?mibextid=wwXIfr"
     },
     {
       "name": "twitter",
-      "icon": "fab fa-twitter",
-      "link": "https://twitter.com/"
+      "icon": "fab fa-x-twitter",
+      "link": "https://x.com/logicshift_ai"
     },
     {
       "name": "instagram",
       "icon": "fab fa-instagram",
-      "link": "https://www.instagram.com/"
+      "link": "https://www.instagram.com/logicshift.ai?igsh=bGgxN2Y5dnJ6dno%3D&utm_source=qr"
     },
     {
       "name": "linkedin",
