@@ -70,3 +70,6 @@
   
   
 })();
+
+
+// copy to clipboard
