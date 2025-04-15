@@ -1,0 +1,26 @@
+{{- $name := .Get "name" -}}
+{{- $state := .Get "state" | default "open" }}
+
+<li class="group flex flex-col list-none">
+  <button class="filetree-folder inline-flex items-center py-1 cursor-pointer hover:text-primary" data-state="{{ $state }}">
+    <!-- Closed Folder Icon -->
+    <span data-state="{{ $state }}" class="data-[state=open]:hidden text-gray-500 dark:text-gray-400">
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h4l2 2h12v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" />
+      </svg>
+    </span>
+
+    <!-- Open Folder Icon -->
+    <span data-state="{{ $state }}" class="data-[state=closed]:hidden text-primary">
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h4l2 2h12v9a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" />
+      </svg>
+    </span>
+
+    <span class="ltr:ml-2 rtl:mr-2">{{ $name }}</span>
+  </button>
+
+  <ul data-state="{{ $state }}" class="ltr:pl-5 rtl:pr-5 data-[state=closed]:hidden">
+    {{- .InnerDeindent -}}
+  </ul>
+</li>

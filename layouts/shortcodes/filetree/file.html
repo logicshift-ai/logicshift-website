@@ -1,0 +1,8 @@
+{{- $name := .Get "name" -}}
+
+<li class="flex list-none">
+  <span class="inline-flex items-center gap-x-2 py-1">
+    <i class="fa-solid fa-file text-gray-500 dark:text-dark w-5 text-base"></i>
+    <span>{{ $name | markdownify }}</span>
+  </span>
+</li>
