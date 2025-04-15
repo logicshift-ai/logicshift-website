@@ -1,5 +1,6 @@
 ---
 title: "Run Odoo Using Docker – A Beginner-Friendly Guide"
+slug: run-odoo-using-docker-a-beginner-friendly-guide
 meta_title: ""
 description: "this is meta description"
 date: 2022-04-04T05:00:00Z
@@ -9,6 +10,7 @@ author: "Taral Desai"
 tags: ["Odoo Setup", "Docker"]
 draft: false
 ---
+
 
 Curious about running your own Odoo server, but not ready to dive into Docker Compose or full production setups? This guide walks you through launching Odoo using simple Docker commands — step by step — with clear explanations so even first-timers can follow along.
 

@@ -1,5 +1,6 @@
 ---
 title: "Launch Odoo 18 Like a Pro with Docker Compose"
+slug: launch-odoo-18-like-a-pro-with-docker-compose
 meta_title: ""
 description: "this is meta description"
 date: 2022-04-04T05:00:00Z
@@ -9,6 +10,7 @@ author: "Taral Desai"
 tags: ["Odoo Setup", "Docker"]
 draft: false
 ---
+
 
 Ever wanted to try out **Odoo 18** without diving into dependency hell? You're in the right place. With **Docker Compose**, we’ll spin up a full Odoo environment — clean, fast, and production-ready in minutes.
 

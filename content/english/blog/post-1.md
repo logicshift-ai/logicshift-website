@@ -1,5 +1,6 @@
 ---
 title: "How to Install Docker & Docker Compose on Ubuntu, Windows, and macOS"
+slug: how-to-install-docker-and-docker-compose-on-ubuntu-windows-and-macos
 meta_title: ""
 description: "this is meta description"
 date: 2022-04-04T05:00:00Z
