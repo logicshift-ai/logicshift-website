@@ -260,22 +260,42 @@ flowchart TD
 ### Timeline 
 
 {{< timeline >}}
+- date: "January 13th, 2022"
+  title: "Flowbite Application UI v2.0.0"
+  badge: "Latest"
+  description: "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages."
+  icon: "fa fa-calendar"
+  link:
+    url: "#"
+    text: "Download ZIP"
+    icon: "fa fa-download"
 
-date: 2020
-title: Started LogicShift
-description: Began helping small businesses adopt modern technology.
-icon: fa-rocket
----
-date: 2021
-title: Built our first Odoo integration
-description: Customized Odoo to help a client automate their order-to-cash process.
-icon: fa-plug
----
-date: 2024
-title: Launched AI-enabled dashboards
-description: Introduced smart reports using AI for our retail clients.
-icon: fa-brain
+- date: "December 7th, 2021"
+  title: "Flowbite Figma v1.3.0"
+  description: "All of the pages and components are first designed in Figma and we keep a parity between the two versions even as we update the project."
+  icon: "fa fa-pencil-ruler"
+
+- date: "December 2nd, 2021"
+  title: "Flowbite Library v1.2.2"
+  description: "Get started with dozens of web components and interactive elements built on top of Tailwind CSS."
+  icon: "fa fa-layer-group"
 {{< /timeline >}}
+
+### Filetree
+
+{{< filetree/container >}}
+  {{< filetree/folder name="content" >}}
+    {{< filetree/file name="_index.md" >}}
+    {{< filetree/folder name="docs" state="closed" >}}
+      {{< filetree/file name="_index.md" >}}
+      {{< filetree/file name="introduction.md" >}}
+      {{< filetree/file name="introduction.fr.md" >}}
+    {{< /filetree/folder >}}
+  {{< /filetree/folder >}}
+  {{< filetree/file name="hugo.toml" >}}
+{{< /filetree/container >}}
+
+
 
 
 

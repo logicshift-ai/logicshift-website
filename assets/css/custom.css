@@ -1,8 +1,8 @@
 /* Add your own custom styles here */
 .header {
     @apply sticky top-0 z-30 
-           bg-white/30 dark:bg-dark/40 
-           backdrop-blur-lg 
+           backdrop-blur-lg  
+           bg-light/30 dark:bg-dark/40  
            shadow-md 
            transition-all duration-300;
   }
@@ -24,12 +24,23 @@
     animation-play-state: paused;
   }
   
-  .section-xs {
-    @apply py-4;
+  /* Hero section */
+  .section-hero {
+    @apply min-h-[calc(100vh-70.39px)] md:min-h-[calc(100vh-80px)] lg:min-h-[calc(100vh-98px)];
+    /* @apply md:py-8 lg:py-16; */
+    @apply items-center;
   }
 
-  .section {
-    @apply py-12 xl:pt-8 pb-24 xl:pb-28;
+  @media (min-width: 1024px) and (orientation: landscape) {
+    
+    .section-hero-inner {
+      flex-direction: row !important;
+    }
+  }
+/* Hero section */
+
+  .section-xs {
+    @apply py-4;
   }
 
   .swiper-slide {
@@ -38,4 +49,4 @@
   .swiper-slide-active {
     transform: scale(1.00);
   }
- 
+

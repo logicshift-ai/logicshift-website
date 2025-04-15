@@ -2,9 +2,10 @@
 
 <!-- Banner -->
 {{ with .Params.banner }}
-<section class="section flex items-center min-h-screen">
+<section class="section-hero flex justify-center overflow-hidden">
   <div class="container">
-    <div class="flex flex-col xl:flex-row items-center justify-between gap-12">
+    <div class="section-hero-inner flex flex-col items-center justify-center gap-8">
+
       <!-- Text content -->
       <div class="w-full xl:w-1/2 text-center xl:text-left">
         <h1 class="text-[#0E2A1F] dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-teal-400 dark:to-gray-400 text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-6">
@@ -29,15 +30,8 @@
 
       <!-- Image -->
       <div class="w-full xl:w-1/2">
-        {{ partial "image" (dict
-          "Src" .image
-          "Alt" "Banner image"
-          "Loading" "eager"
-          "Class" "mx-auto w-full max-w-3xl h-auto"
-          "Resize" "1600x"
-          "Quality" "90"
-          "Format" "WebP"
-        ) }}
+        {{ partial "components/banner.html" . }}
+      </div>
       </div>
     </div>
   </div>
@@ -50,14 +44,14 @@
 
 {{ with .Params.services }}
   {{ if .enable }}
-    <section class="section bg-gradient">
+    <section class="section-sm bg-gradient">
       <div class="container">
         <!-- Section Header -->
-        <div class="text-center mb-16">
+        <div class="text-center mb-10">
           <h2 class="mb-4">
             {{ .title }}
           </h2>
-          <p class="mb-8 text-lg">
+          <p class="text-lg">
             {{ .content }}
           </p>
         </div>

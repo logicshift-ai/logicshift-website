@@ -1,0 +1,24 @@
+{{ $img := resources.Get "images/banner.png" }}
+{{ $small := $img.Resize "575x webp q90" }}
+{{ $medium := $img.Resize "767x webp q90" }}
+{{ $large := $img.Resize "991x webp q90" }}
+{{ $xlarge := $img.Resize "1600x webp q90" }}
+{{ $fallback := $img.Resize "1600x png q90" }}
+
+<picture>
+  <source srcset="{{ $small.RelPermalink }}" media="(max-width: 575px)" type="image/webp">
+  <source srcset="{{ $medium.RelPermalink }}" media="(max-width: 767px)" type="image/webp">
+  <source srcset="{{ $large.RelPermalink }}" media="(max-width: 991px)" type="image/webp">
+  <source srcset="{{ $xlarge.RelPermalink }}" media="(min-width: 992px)" type="image/webp">
+  <img
+    src="{{ $fallback.RelPermalink }}"
+    alt="Banner image"
+    width="721"
+    height="553"
+    class="mx-auto w-full max-w-3xl h-auto"
+    loading="eager"
+    decoding="async"
+    fetchpriority="high"
+    style="aspect-ratio:721/553"
+  >
+</picture>

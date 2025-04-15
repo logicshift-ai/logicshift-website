@@ -72,4 +72,25 @@
 })();
 
 
-// copy to clipboard
+// Script for filetree shortcode collapsing/expanding folders used in the theme
+// ======================================================================
+
+document.addEventListener("DOMContentLoaded", function () {
+  const folders = document.querySelectorAll(".filetree-folder");
+
+  folders.forEach(function (folder) {
+    folder.addEventListener("click", function () {
+      const children = Array.from(folder.children);
+      children.forEach(function (el) {
+        if (el.dataset.state) {
+          el.dataset.state = el.dataset.state === "open" ? "closed" : "open";
+        }
+      });
+
+      const list = folder.nextElementSibling;
+      if (list && list.dataset) {
+        list.dataset.state = list.dataset.state === "open" ? "closed" : "open";
+      }
+    });
+  });
+});
