@@ -142,40 +142,62 @@
 
 <!-- /Services -->
 
-
 <!-- Features -->
 {{ range $i, $e := .Params.features }}
 <section class="section-sm {{ if (modBool $i 2) }}bg-gradient{{ end }}">
   <div class="container">
-    <div class="row items-center justify-between">
-      <div class="mb:md-0 {{ if not (modBool $i 2) }}md:order-2{{ end }} md:col-5 mb-6">
-        {{ partial "image" (dict "Src" .image "Alt" "feature image" "DisplayXL" "520x" "DisplayLG" "425x" "DisplayMD" "360x") }}
+    <div class="grid md:grid-cols-2 items-center gap-10 md:gap-16 {{ if not (modBool $i 2) }}md:[&>*:first-child]:order-2{{ end }}">
+
+      <!-- Feature Image -->
+      <div class="flex justify-center">
+        {{ partial "image" (dict 
+          "Src" .image 
+          "Alt" (printf "Image for %s" .title) 
+          "DisplayXL" "520x"
+          "DisplayLG" "425x"
+          "DisplayMD" "360x"
+          "Class" "rounded-2xl shadow-none max-w-full h-auto"
+        ) }}
       </div>
-      <div class="{{ if not (modBool $i 2) }}md:order-1{{ end }} md:col-7 xl:col-6">
-        <h2 class="mb-4">{{ .title | markdownify }}</h2>
-        <p class="mb-8 text-lg">{{ .content | markdownify }}</p>
-        <ul>
+
+      <!-- Feature Content -->
+      <div>
+        <h2 class="tracking-tight text-gray-900 dark:text-white mb-4">
+          {{ .title | markdownify }}
+        </h2>
+
+        <p class="text-base lg:text-lg text-gray-900 dark:text-white mb-6">
+          {{ .content | markdownify }}
+        </p>
+
+        <!-- Bullet Points -->
+        <ul class="space-y-4">
           {{ range .bulletpoints }}
-            <li class="relative mb-4 pl-6">
-              <i class="fa fa-check absolute left-0 top-1.5"></i>
-              {{ . | markdownify }}
-            </li>
+          <li class="flex items-start gap-3">
+            <i class="fa fa-check mt-1 text-primary"></i>
+            <span class="text-gray-800 dark:text-gray-200 leading-relaxed">{{ . | markdownify }}</span>
+          </li>
           {{ end }}
         </ul>
+
+        <!-- CTA Button -->
         {{ with .button }}
-          {{ if .enable }}
-            <a class="btn btn-primary mt-6" href="{{ .link | absURL }}">
-              {{ .label }}
-              <i class="fa fa-arrow-right pl-2"></i>
-            </a>
-          {{ end }}
+        {{ if .enable }}
+        <a href="{{ .link | absURL }}" class="inline-flex items-center gap-2 btn btn-primary mt-8 group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+          {{ .label }}
+          <i class="fa fa-arrow-right transition-transform group-hover:translate-x-1 duration-200"></i>
+        </a>
+        {{ end }}
         {{ end }}
       </div>
     </div>
   </div>
 </section>
 {{ end }}
-<!-- /Features -->  
+<!-- /Features -->
+
+
+
 <section class="section-xs mt-0 overflow-hidden">
  <!-- Marquee Partial -->
  {{ partial "components/odoo-marquee.html" $ }}
