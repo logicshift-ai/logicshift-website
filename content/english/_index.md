@@ -68,47 +68,39 @@ services:
 
 features:
   - title: "Why Odoo for Small and Medium Businesses"
-    image: "/images/Odoo.png"
-    content: "Odoo provides a customizable solution to meet all your operational needs — and it grows with your business. It's the perfect blend of power, affordability, and flexibility for small and mid-sized businesses looking to modernize their operations."
+    image: "/images/whyodoo.png"
+    content: "Odoo is the all-in-one ERP platform that simplifies operations, reduces costs, and scales with your growth."
     bulletpoints:
-      - "**Comprehensive**: Enterprise-level apps for Sales, Operations, Finance, Marketing, Ecommerce, and more — all in one place."
-      - "**Affordable**: Get the features of leading ERP platforms at a fraction of the cost."
-      - "**Scalable**: Easily add users and modules as your business expands."
-      - "**Customizable**: As open-source software, Odoo can be tailored to match your exact processes."
-      - "**Integrated**: Centralized data eliminates silos and errors across departments."
-      - "**Accessible**: Intuitive UI and mobile-friendly — work from anywhere, anytime."
+      - "**Comprehensive**: Manage Sales, Finance, Marketing, and more in one place."
+      - "**Affordable & Scalable**: Pay less, grow more — add users or features anytime."
+      - "**Customizable & Integrated**: Tailored to your workflow, with centralized data."
     button:
-      enable: True
+      enable: true
       label: "Learn More"
       link: ""
 
-  - title: "Business Software Solutions That Empower Growth"
-    image: "/images/Odoo.png"
-    content: "Take full control of your business operations with powerful, web-based Odoo applications. At LogicShift, we deliver customized ERP solutions that streamline everything from sales and marketing to inventory and team collaboration — all in one integrated platform."
+  - title: "Smart Business Solutions Built with Odoo"
+    image: "/images/smb.png"
+    content: "From sales to finance to operations — LogicShift helps you run smarter with Odoo’s modern, web-based tools."
     bulletpoints:
-      - "Automate daily tasks to save time and reduce manual work."
-      - "Easily manage sales, inventory, and finances in one place."
-      - "Use smart dashboards to make better business decisions."
-      - "Build an online store and manage it alongside physical sales with POS soutions."
-      - "Collaborate with your team and track projects effortlessly."
-      - "Start simple and scale with more tools as your business grows."
+      - "Automate tasks and reduce manual work."
+      - "Make better decisions with smart dashboards."
+      - "Sell online or offline with integrated POS and ecommerce."
     button:
-      enable: True
+      enable: true
       label: "Explore Solutions"
       link: ""
 
-  - title: "The Top Reasons to Choose LogicShift for Your Odoo Project"
-    image: "/images/Odoo.png"
-    content: "At LogicShift, we specialize in delivering tailored Odoo solutions that streamline operations, boost productivity, and scale with your business needs. Whether you're just getting started or need complex customization, we're your trusted Odoo partner."
+  - title: "Why Choose LogicShift as Your Odoo Partner"
+    image: "/images/whyus.png"
+    content: "We help small businesses thrive with expert Odoo implementation, custom development, and ongoing support."
     bulletpoints:
-      - "Expert team with deep knowledge of Odoo modules and business workflows."
-      - "Fast, reliable implementations customized for your industry."
-      - "End-to-end support: from planning and development to deployment and training."
-      - "Seamless integration with third-party tools, APIs, and legacy systems."
-      - "Scalable and future-proof solutions built for long-term success."
+      - "Fast, reliable, and tailored implementations."
+      - "Deep understanding of Odoo and SMB needs."
+      - "Full support — from planning to post-launch training."
     button:
-      enable: True
+      enable: true
       label: "Our Process"
       link: ""
-    
+
 ---
