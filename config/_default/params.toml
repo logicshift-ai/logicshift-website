@@ -68,9 +68,9 @@ content = "You must replace the **baseURL** in **hugo.toml** file when deploying
 # seo module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/basic-seo
 [metadata]
 keywords = ["Boilerplate", "Hugo"]
-description = "Hugo & Tailwindcss Starter"
-author = "zeon.studio"
-twitter = "zeon_studio"
+description = "From setup to customization, LogicShift delivers tailored Odoo solutions that transform how you manage sales, inventory, finance, and more."
+author = "logicshift"
+twitter = "logicshift_ai"
 image = "images/og.png"
 
 
