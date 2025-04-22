@@ -42,6 +42,18 @@
   integrity="{{ $scriptsLazy.Data.Integrity }}"
   src="{{ $scriptsLazy.RelPermalink }}"></script>
 
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+ <script>
+  AOS.init({
+    duration: 700,
+    once: true,
+    easing: 'ease-in-out',
+    anchorPlacement: 'top-bottom',
+  });
+</script>
+
+  
+  
 <!-- progressive web app -->
 {{ partialCached "pwa.html" . }}
 

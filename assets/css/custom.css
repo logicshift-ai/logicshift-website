@@ -102,3 +102,5 @@
   opacity: 0.05;
   z-index: -10;
 }
+
+[x-cloak] { display: none !important; }
