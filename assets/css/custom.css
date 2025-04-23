@@ -26,7 +26,7 @@
   
   /* Hero section */
   .section-hero {
-    @apply min-h-[calc(100vh-70.39px)] md:min-h-[calc(100vh-80px)] lg:min-h-[calc(100vh-98px)];
+    @apply min-h-[calc(100vh-70.39px)] md:min-h-[calc(100vh-80px)] lg:min-h-[calc(100vh-82px)];
     /* @apply md:py-8 lg:py-16; */
     @apply items-center;
   }
@@ -103,4 +103,3 @@
   z-index: -10;
 }
 
-[x-cloak] { display: none !important; }

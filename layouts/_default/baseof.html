@@ -13,7 +13,7 @@
 
   </head>
 
-  <body>
+  <body data-barba="wrapper">
     <!-- cache partial only in production -->
     {{ if hugo.IsProduction }}
       {{ partialCached "preloader.html" . }}
@@ -36,7 +36,7 @@
     {{ partial "search-modal.html" (dict "Context" . ) }}
 
 
-    <main>
+    <main data-barba="container" data-barba-namespace="default">
       {{ block "main" . }}{{ end }}
     </main>
 

@@ -1,8 +1,23 @@
 <meta charset="utf-8"/>
 
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+<script>
+  (function () {
+    var theme = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    var defaultTheme = "{{ site.Params.theme_default }}";
 
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    var dark =
+      theme === "dark" ||
+      (theme === null && ((defaultTheme === "dark") || (defaultTheme === "system" && prefersDark)));
+
+    if (dark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
 
 <!-- responsive meta -->
 <meta

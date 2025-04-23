@@ -1,16 +1,12 @@
-<header
-  class="header {{ if site.Params.navbar_fixed }}sticky top-0{{ end }} z-30"
-  data-aos="fade-down"
-  data-aos-duration="400"
-  data-aos-easing="ease-out-cubic">
+<header class="header {{ if site.Params.navbar_fixed }}sticky top-0{{ end }} z-30">
   <nav
-    class="navbar container"
+    class="navbar container relative flex items-center justify-between"
     x-data="{ mobileOpen: false }"
     :class="{ 'overflow-hidden': mobileOpen }"
-    @keydown.window.escape="mobileOpen = false">
-
+    @keydown.window.escape="mobileOpen = false"
+  >
     <!-- Logo -->
-    <div class="order-0" data-aos="zoom-out" data-aos-duration="350">
+    <div class="order-0">
       <a class="navbar-brand block" href="{{ site.Home.RelPermalink }}">
         {{ partial "logo" }}
       </a>
@@ -18,11 +14,12 @@
 
     <!-- Mobile Toggler -->
     <button
+      type="button"
       @click="mobileOpen = !mobileOpen"
-      class="order-3 lg:order-1 cursor-pointer flex items-center lg:hidden text-text-dark dark:text-white"
-      aria-label="Toggle navigation"
-      data-aos="zoom-out-left"
-      data-aos-duration="350">
+      :aria-expanded="mobileOpen"
+      class="order-3 lg:order-1 flex items-center lg:hidden cursor-pointer text-text-dark dark:text-white"
+    >
+      <!-- Hamburger -->
       <svg
         x-show="!mobileOpen"
         x-cloak
@@ -44,40 +41,48 @@
     <!-- Navigation Menu -->
     <ul
       id="nav-menu"
-      class="navbar-nav order-3 w-full pb-6 lg:order-1 lg:flex lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8"
-      :class="mobileOpen ? 'block' : 'hidden lg:block'"
-      data-aos="fade-up"
-      data-aos-duration="400"
-      data-aos-easing="ease-in-out-cubic">
-      {{ $currentPage := . }}
+      x-cloak
+      class="
+        navbar-nav
+        order-3 w-full pb-6
+        lg:order-1 lg:flex lg:w-auto lg:space-x-8 lg:pb-0
+        lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2
+      "
+      :class="{ 'block': mobileOpen, 'hidden': !mobileOpen }"
+    >
       {{ range site.Menus.main }}
-        {{ $menuURL := .URL | absLangURL }}
-        {{ $pageURL := $currentPage.Permalink | absLangURL }}
-        {{ $active := eq $menuURL $pageURL }}
+        {{ $menuLink := .URL | relLangURL }}
+
         {{ if .HasChildren }}
-          <li class="nav-item nav-dropdown group relative">
-            <span
+          <li
+            class="nav-item nav-dropdown relative"
+            x-data="{ open: false }"
+            @click.away="open = false"
+          >
+            <button
+              type="button"
+              @click="open = !open"
               class="nav-link inline-flex items-center"
-              data-aos="fade"
-              data-aos-delay="100"
-              data-aos-duration="350">
+              :class="{ 'active': open }"
+            >
               {{ .Name }}
               <svg class="h-4 w-4 fill-current ml-1" viewBox="0 0 20 20">
-                <path
-                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
               </svg>
-            </span>
-            <ul class="nav-dropdown-list lg:group-hover:visible lg:group-hover:opacity-100">
+            </button>
+            <ul
+              class="nav-dropdown-list"
+              x-show="open" x-transition x-cloak
+            >
               {{ range .Children }}
-                {{ $childURL := .URL | absLangURL }}
-                {{ $active := eq $childURL $pageURL }}
-                <li class="nav-dropdown-item" data-aos="zoom-out-left" data-aos-duration="300">
+                {{ $childLink := .URL | relLangURL }}
+                <li class="nav-dropdown-item">
                   <a
-                    class="nav-dropdown-link {{ if $active }}active{{ end }}"
-                    {{ if findRE `^http` .URL }} target="_blank" rel="noopener"{{ end }}
-                    href="{{ if findRE `^#` .URL }}
-                      {{ if not $.IsHome }}{{ site.Home.RelPermalink }}{{ end }}{{ .URL }}
-                    {{ else }}{{ .URL | relLangURL }}{{ end }}">
+                    class="nav-dropdown-link"
+                    @click="mobileOpen = false"
+                    href="{{ if findRE `^#` .URL }}{{ if not $.IsHome }}{{ site.Home.RelPermalink }}{{ end }}{{ .URL }}{{ else }}{{ .URL | relLangURL }}{{ end }}"
+                    {{ if findRE `^http` .URL }}target="_blank" rel="noopener"{{ end }}
+                  >
                     {{ .Name }}
                   </a>
                 </li>
@@ -85,13 +90,13 @@
             </ul>
           </li>
         {{ else }}
-          <li class="nav-item" data-aos="fade-up" data-aos-duration="300">
+          <li class="nav-item">
             <a
-              class="nav-link {{ if $active }}active{{ end }}"
-              {{ if findRE `^http` .URL }} target="_blank" rel="noopener"{{ end }}
-              href="{{ if findRE `^#` .URL }}
-                {{ if not $.IsHome }}{{ site.Home.RelPermalink }}{{ end }}{{ .URL }}
-              {{ else }}{{ .URL | relLangURL }}{{ end }}">
+              class="nav-link"
+              @click="mobileOpen = false"
+              href="{{ if findRE `^#` .URL }}{{ if not $.IsHome }}{{ site.Home.RelPermalink }}{{ end }}{{ .URL }}{{ else }}{{ .URL | relLangURL }}{{ end }}"
+              {{ if findRE `^http` .URL }}target="_blank" rel="noopener"{{ end }}
+            >
               {{ .Name }}
             </a>
           </li>
@@ -99,23 +104,33 @@
       {{ end }}
 
       {{ if site.Params.navigation_button.enable }}
-        <li class="mt-4 inline-block lg:hidden" data-aos="fade-up" data-aos-duration="300">
+        <li class="mt-4 lg:hidden">
           <a
             class="btn btn-outline-primary btn-sm"
-            href="{{ site.Params.navigation_button.link | relLangURL }}">
+            href="{{ site.Params.navigation_button.link | relLangURL }}"
+          >
             {{ site.Params.navigation_button.label }}
           </a>
         </li>
       {{ end }}
     </ul>
 
-    <!-- Right Actions -->
-    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0" data-aos="fade-left" data-aos-duration="400">
+    <!-- Right-hand Actions -->
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0 justify-end">
       {{ with site.Params.search }}
         {{ if .enable }}
           <button
             aria-label="search"
-            class="border-border text-text-dark hover:text-primary dark:border-darkmode-border mr-5 inline-block border-r pr-5 text-xl dark:text-white dark:hover:text-darkmode-primary"
+            {{ if and (not site.Params.navigation_button.enable) (not site.Params.theme_switcher) }}
+              class="border-border text-text-dark hover:text-primary
+              dark:border-darkmode-border mr-5 inline-block border-r
+              lg:border-r-0 pr-5 lg:pr-0 text-xl dark:text-white
+              dark:hover:text-darkmode-primary"
+            {{ else }}
+              class="border-border text-text-dark hover:text-primary
+              dark:border-darkmode-border mr-5 inline-block border-r pr-5
+              text-xl dark:text-white dark:hover:text-darkmode-primary"
+            {{ end }}
             data-target="search-modal">
             <i class="fa-solid fa-search"></i>
           </button>
@@ -128,9 +143,7 @@
       {{ if site.Params.navigation_button.enable }}
         <a
           href="{{ site.Params.navigation_button.link | relLangURL }}"
-          class="btn btn-outline-primary btn-sm hidden lg:inline-block"
-          data-aos="fade-left"
-          data-aos-duration="300">
+          class="btn btn-outline-primary btn-sm hidden lg:inline-block">
           {{ site.Params.navigation_button.label }}
         </a>
       {{ end }}

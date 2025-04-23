@@ -9,7 +9,7 @@ logo_darkmode = "images/Logo_dark@2x.png"
 logo_width = "160px"
 logo_height = "32px"
 # if logo_webp set false, will not generate WEBP version of logo | default is true
-logo_webp = false
+logo_webp = true
 # logo text will only show when logo is missing.
 logo_text = "LogicShift"
 # navbar fixed to top
