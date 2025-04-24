@@ -36,7 +36,7 @@
 
     // Service Slider
   // ----------------------------------------
-  new Swiper(".testimonial-slider", {
+  new Swiper(".service-slider", {
     loop: true,
     spaceBetween: 24,
     centeredSlides: true,
@@ -44,7 +44,7 @@
     slidesPerView: 1.2,
     speed: 600,
     pagination: {
-      el: ".testimonial-slider-pagination",
+      el: ".service-slider-pagination",
       clickable: true,
     },
     autoplay: {

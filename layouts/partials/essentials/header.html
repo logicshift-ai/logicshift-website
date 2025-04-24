@@ -3,7 +3,6 @@
   <nav
     class="navbar container relative flex items-center justify-between"
     x-data="{ mobileOpen: false }"
-    :class="{ 'overflow-hidden': mobileOpen }"
     @keydown.window.escape="mobileOpen = false">
     <!-- Logo -->
     <div class="order-0">
@@ -39,15 +38,18 @@
 
     <!-- Navigation Menu -->
     <ul
-      id="nav-menu"
-      x-cloak
-      class="
-        navbar-nav
-        order-3 w-full pb-6
-        lg:order-1 lg:flex lg:w-auto lg:space-x-8 lg:pb-0
-        lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2
-      "
-      :class="{ 'block': mobileOpen, 'hidden': !mobileOpen }">
+  id="nav-menu"
+  x-cloak
+  class="
+    navbar-nav
+    order-3 w-full pb-6
+    overflow-y-auto max-h-[100dvh] overscroll-contain
+    lg:order-1 lg:flex lg:w-auto lg:space-x-8 lg:pb-0
+    lg:overflow-visible lg:max-h-none
+    lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2
+  "
+  :class="{ 'block': mobileOpen, 'hidden': !mobileOpen }"
+>
       {{ range site.Menus.main }}
         {{ $menuLink := .URL | relLangURL }}
 
