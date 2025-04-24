@@ -1,10 +1,10 @@
-<header class="header {{ if site.Params.navbar_fixed }}sticky top-0{{ end }} z-30">
+<header
+  class="header {{ if site.Params.navbar_fixed }}sticky top-0{{ end }} z-30">
   <nav
     class="navbar container relative flex items-center justify-between"
     x-data="{ mobileOpen: false }"
     :class="{ 'overflow-hidden': mobileOpen }"
-    @keydown.window.escape="mobileOpen = false"
-  >
+    @keydown.window.escape="mobileOpen = false">
     <!-- Logo -->
     <div class="order-0">
       <a class="navbar-brand block" href="{{ site.Home.RelPermalink }}">
@@ -17,8 +17,7 @@
       type="button"
       @click="mobileOpen = !mobileOpen"
       :aria-expanded="mobileOpen"
-      class="order-3 lg:order-1 flex items-center lg:hidden cursor-pointer text-text-dark dark:text-white"
-    >
+      class="order-3 lg:order-1 flex items-center lg:hidden cursor-pointer text-text-dark dark:text-white">
       <!-- Hamburger -->
       <svg
         x-show="!mobileOpen"
@@ -48,8 +47,7 @@
         lg:order-1 lg:flex lg:w-auto lg:space-x-8 lg:pb-0
         lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2
       "
-      :class="{ 'block': mobileOpen, 'hidden': !mobileOpen }"
-    >
+      :class="{ 'block': mobileOpen, 'hidden': !mobileOpen }">
       {{ range site.Menus.main }}
         {{ $menuLink := .URL | relLangURL }}
 
@@ -57,32 +55,35 @@
           <li
             class="nav-item nav-dropdown relative"
             x-data="{ open: false }"
-            @click.away="open = false"
-          >
+            @click.away="open = false">
             <button
               type="button"
               @click="open = !open"
               class="nav-link inline-flex items-center"
-              :class="{ 'active': open }"
-            >
+              :class="{ 'active': open }">
               {{ .Name }}
               <svg class="h-4 w-4 fill-current ml-1" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                <path
+                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
               </svg>
             </button>
-            <ul
-              class="nav-dropdown-list"
-              x-show="open" x-transition x-cloak
-            >
+            <ul class="nav-dropdown-list" x-show="open" x-transition x-cloak>
               {{ range .Children }}
                 {{ $childLink := .URL | relLangURL }}
                 <li class="nav-dropdown-item">
                   <a
                     class="nav-dropdown-link"
-                    @click="mobileOpen = false"
-                    href="{{ if findRE `^#` .URL }}{{ if not $.IsHome }}{{ site.Home.RelPermalink }}{{ end }}{{ .URL }}{{ else }}{{ .URL | relLangURL }}{{ end }}"
-                    {{ if findRE `^http` .URL }}target="_blank" rel="noopener"{{ end }}
-                  >
+                    @click="open = false; mobileOpen = false"
+                    href="{{ if findRE `^#` .URL }}
+                      {{ if not $.IsHome }}
+                        {{ site.Home.RelPermalink }}
+                      {{ end }}{{ .URL }}
+                    {{ else }}
+                      {{ .URL | relLangURL }}
+                    {{ end }}"
+                    {{ if findRE `^http` .URL }}
+                      target="_blank" rel="noopener"
+                    {{ end }}>
                     {{ .Name }}
                   </a>
                 </li>
@@ -94,9 +95,16 @@
             <a
               class="nav-link"
               @click="mobileOpen = false"
-              href="{{ if findRE `^#` .URL }}{{ if not $.IsHome }}{{ site.Home.RelPermalink }}{{ end }}{{ .URL }}{{ else }}{{ .URL | relLangURL }}{{ end }}"
-              {{ if findRE `^http` .URL }}target="_blank" rel="noopener"{{ end }}
-            >
+              href="{{ if findRE `^#` .URL }}
+                {{ if not $.IsHome }}
+                  {{ site.Home.RelPermalink }}
+                {{ end }}{{ .URL }}
+              {{ else }}
+                {{ .URL | relLangURL }}
+              {{ end }}"
+              {{ if findRE `^http` .URL }}
+                target="_blank" rel="noopener"
+              {{ end }}>
               {{ .Name }}
             </a>
           </li>
@@ -107,8 +115,7 @@
         <li class="mt-4 lg:hidden">
           <a
             class="btn btn-outline-primary btn-sm"
-            href="{{ site.Params.navigation_button.link | relLangURL }}"
-          >
+            href="{{ site.Params.navigation_button.link | relLangURL }}">
             {{ site.Params.navigation_button.label }}
           </a>
         </li>
@@ -116,7 +123,8 @@
     </ul>
 
     <!-- Right-hand Actions -->
-    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0 justify-end">
+    <div
+      class="order-1 ml-auto flex items-center md:order-2 lg:ml-0 justify-end">
       {{ with site.Params.search }}
         {{ if .enable }}
           <button
