@@ -41,6 +41,49 @@
   crossorigin="anonymous"
   integrity="{{ $scriptsLazy.Data.Integrity }}"
   src="{{ $scriptsLazy.RelPermalink }}"></script>
+  
+
+<!-- Load GSAP and Barba.js -->
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/@barba/core"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    barba.init({
+      views: [
+        {
+          namespace: 'default',
+          beforeEnter() {
+            window.dispatchEvent(new Event('barba:ready'));
+
+            // Close mobile menu on page change
+            const navbar = document.querySelector('[x-data]');
+            if (navbar && navbar.__x) {
+              navbar.__x.$data.mobileOpen = false;
+            }
+          }
+        }
+      ],
+      transitions: [
+        {
+          name: 'no-animation',
+          leave() {},
+          enter() {
+            window.scrollTo({ top: 0, behavior: 'auto' });
+          }
+        }
+      ]
+    });
+  });
+
+
+  // Re-initialize Alpine.js after Barba page change
+  window.addEventListener('barba:ready', () => {
+    if (window.Alpine && window.Alpine.initTree) {
+      Alpine.initTree(document.body);
+    }
+  });
+</script>
 
 <!-- progressive web app -->
 {{ partialCached "pwa.html" . }}
