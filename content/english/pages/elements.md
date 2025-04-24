@@ -6,6 +6,8 @@ meta_title: ""
 description: "This is meta description"
 # save as draft
 draft: false
+
+no_barba: true
 ---
 
 {{< toc >}}
