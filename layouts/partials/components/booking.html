@@ -69,12 +69,41 @@
     container.appendChild(script);
   }
 
+  function fixCalButtonZindexSmoothly() {
+    const observer = new MutationObserver(() => {
+      const calButton = document.querySelector("cal-floating-button");
+      if (calButton) {
+        const shadowRoot = calButton.shadowRoot;
+        if (shadowRoot) {
+          const button = shadowRoot.querySelector("button");
+          if (button) {
+            // First hide it to prevent sudden jumps
+            button.style.visibility = "hidden";
+
+            requestAnimationFrame(() => {
+              button.style.zIndex = "1000"; // Set correct z-index smoothly
+              button.style.visibility = "visible"; // Then make it visible
+              observer.disconnect(); // Stop observing
+            });
+          }
+        }
+      }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     loadCalScript();
+    fixCalButtonZindexSmoothly();
+
     const themeSwitcher = document.querySelector('[data-theme-switcher]');
     if (themeSwitcher) {
       themeSwitcher.addEventListener("change", () => {
-        setTimeout(loadCalScript, 250);
+        setTimeout(() => {
+          loadCalScript();
+          fixCalButtonZindexSmoothly();
+        }, 300);
       });
     }
   });
