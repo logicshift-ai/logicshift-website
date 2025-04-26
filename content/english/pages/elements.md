@@ -6,8 +6,6 @@ meta_title: ""
 description: "This is meta description"
 # save as draft
 draft: false
-
-no_barba: true
 ---
 
 {{< toc >}}
@@ -251,7 +249,7 @@ flowchart TD
 
 ### Youtube video
 
-{{< youtube ResipmZmpDU >}}
+{{< youtube nbso3NVz3p8 >}}
 
 <hr>
 
