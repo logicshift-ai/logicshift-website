@@ -7,8 +7,8 @@ url = "/"
 weight = 1
 
 [[main]]
-name = "About"
-url = "/about"
+name = "Odoo"
+url = "/odoo"
 weight = 2
 
 [[main]]
@@ -17,47 +17,57 @@ url = "/blog"
 weight = 3
 
 [[main]]
+name = "About"
+url = "/about"
 weight = 4
-name = "Pages"
 
 [[main]]
-parent = "Pages"
+weight = 5
+name = "Services"
+
+[[main]]
+parent = "Services"
 name = "Elements"
 url = "/elements"
 
 [[main]]
-parent = "Pages"
+parent = "Services"
 name = "Contact"
 url = "/contact"
 
 [[main]]
-parent = "Pages"
+parent = "Services"
 name = "Authors"
 url = "/authors"
 
 [[main]]
-parent = "Pages"
+parent = "Services"
 name = "Categories"
 url = "/categories"
 
 [[main]]
-parent = "Pages"
+parent = "Services"
 name = "404 Page"
 url = "/404"
 
 
 # footer menu
 [[footer]]
+name = "Odoo"
+url = "/odoo"
+weight = 1
+
+[[footer]]
 name = "About"
 url = "/about"
-weight = 1
+weight = 2
 
 [[footer]]
 name = "Elements"
 url = "/elements"
-weight = 2
+weight = 3
 
 [[footer]]
 name = "Privacy Policy"
 url = "/privacy-policy"
-weight = 3
+weight = 4

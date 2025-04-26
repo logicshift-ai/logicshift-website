@@ -56,10 +56,15 @@
           beforeEnter() {
             window.dispatchEvent(new Event('barba:ready'));
 
-            // Close mobile menu on page change
+            // Reset mobile nav and dropdowns
             const navbar = document.querySelector('[x-data]');
             if (navbar && navbar.__x) {
               navbar.__x.$data.mobileOpen = false;
+              document.querySelectorAll('[x-data]').forEach((el) => {
+                if (el.__x && 'open' in el.__x.$data) {
+                  el.__x.$data.open = false;
+                }
+              });
             }
           }
         }
@@ -70,20 +75,25 @@
           leave() {},
           enter() {
             window.scrollTo({ top: 0, behavior: 'auto' });
+          },
+          afterEnter() {
+            // Reinitialize Alpine components
+            if (window.Alpine && window.Alpine.initTree) {
+              Alpine.initTree(document.body);
+            }
+
+            // Reinitialize the service slider
+            if (typeof window.initServiceSlider === 'function') {
+              window.initServiceSlider();
+            }
           }
         }
       ]
     });
   });
-
-
-  // Re-initialize Alpine.js after Barba page change
-  window.addEventListener('barba:ready', () => {
-    if (window.Alpine && window.Alpine.initTree) {
-      Alpine.initTree(document.body);
-    }
-  });
 </script>
+
+
 
 <!-- progressive web app -->
 {{ partialCached "pwa.html" . }}

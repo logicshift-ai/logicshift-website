@@ -36,7 +36,17 @@
 
     // Service Slider
   // ----------------------------------------
-  new Swiper(".service-slider", {
+// assets/js/main.js
+
+window.initServiceSlider = function () {
+  const el = document.querySelector('.service-slider');
+  if (!el) return;
+
+  // Destroy existing Swiper instance (if any)
+  if (el.swiper) el.swiper.destroy(true, true);
+
+  // Re-initialize Swiper
+  new Swiper(el, {
     loop: true,
     spaceBetween: 24,
     centeredSlides: true,
@@ -52,21 +62,19 @@
       disableOnInteraction: false,
     },
     breakpoints: {
-      480: {
-        slidesPerView: 1.4,
-      },
-      640: {
-        slidesPerView: 1.7,
-      },
-      768: {
-        centeredSlides: false,
-        slidesPerView: 2,
-      },
-      1024: {
-        slidesPerView: 3,
-      },
+      480: { slidesPerView: 1.4 },
+      640: { slidesPerView: 1.7 },
+      768: { centeredSlides: false, slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
     },
   });
+};
+
+// Also run once on full page load
+window.addEventListener('load', () => {
+  window.initServiceSlider();
+});
+
   
   
 })();

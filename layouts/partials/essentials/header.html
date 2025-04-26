@@ -3,7 +3,9 @@
   <nav
     class="navbar container relative flex items-center justify-between"
     x-data="{ mobileOpen: false }"
-    @keydown.window.escape="mobileOpen = false">
+    @keydown.window.escape="mobileOpen = false"
+    @click.away="mobileOpen = false">
+
     <!-- Logo -->
     <div class="order-0">
       <a class="navbar-brand block" href="{{ site.Home.RelPermalink }}">
@@ -60,7 +62,7 @@
             @click.away="open = false">
             <button
               type="button"
-              @click="open = !open"
+              @click.stop="open = !open"
               class="nav-link inline-flex items-center"
               :class="{ 'active': open }">
               {{ .Name }}
