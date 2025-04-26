@@ -1,0 +1,38 @@
+{{/*
+Shortcode: processedvideo
+Usage:
+{{< processedvideo base="whatisodoo" poster="/images/whatisodoo-poster.jpg" class="my-8" autoplay="true" muted="true" loop="true" >}}
+
+Design:
+- Matches dark theme from Swiper card
+- Transparent container feel
+- Responsive 16:9 video
+*/}}
+
+{{ $base      := .Get "base" | default "samplevideo" }}
+{{ $poster    := .Get "poster" | default (printf "/videos/%s-poster.jpg" $base) }}
+{{ $class     := .Get "class" | default "" }}
+{{ $autoplay  := .Get "autoplay" | default "false" }}
+{{ $loop      := .Get "loop" | default "false" }}
+{{ $muted     := .Get "muted" | default "false" }}
+{{ $controls  := .Get "controls" | default "true" }}
+
+<div class="w-full max-w-5xl mx-auto aspect-w-16 aspect-h-9 bg-darkmode-body/80 dark:bg-darkmode-body/80 rounded-2xl shadow-lg backdrop-blur-md {{ $class }}">
+  <video
+    class="w-full h-full object-cover rounded-2xl"
+    {{ if eq $autoplay "true" }}autoplay{{ end }}
+    {{ if eq $loop "true" }}loop{{ end }}
+    {{ if eq $muted "true" }}muted{{ end }}
+    {{ if eq $controls "true" }}controls{{ end }}
+    playsinline
+    preload="metadata"
+    poster="{{ $poster }}"
+  >
+    <source src="/videos/{{ $base }}_720p.webm" type="video/webm" media="(max-width:768px)">
+    <source src="/videos/{{ $base }}.webm" type="video/webm">
+    <source src="/videos/{{ $base }}_optimized.mp4" type="video/mp4">
+    <source src="/videos/{{ $base }}.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+</div>
+
