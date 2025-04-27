@@ -1,5 +1,8 @@
 <header
-  class="header {{ if site.Params.navbar_fixed }}sticky top-0{{ end }} z-30">
+  class="header {{ if site.Params.navbar_fixed }}sticky top-0{{ end }} z-30
+    overflow-y-auto max-h-[100dvh] overscroll-contain
+    lg:overflow-visible lg:max-h-none lg:overscroll-auto"
+>
   <nav
     class="navbar container relative flex items-center justify-between"
     x-data="{ mobileOpen: false }"
@@ -15,10 +18,11 @@
 
     <!-- Mobile Toggler -->
     <button
-      type="button"
-      @click="mobileOpen = !mobileOpen"
-      :aria-expanded="mobileOpen"
-      class="order-3 lg:order-1 flex items-center lg:hidden cursor-pointer text-text-dark dark:text-white">
+    type="button"
+    @click="mobileOpen = !mobileOpen"
+    :aria-expanded="mobileOpen"
+    class="order-3 lg:order-1 flex items-center lg:hidden cursor-pointer text-text-dark dark:text-white">
+
       <!-- Hamburger -->
       <svg
         x-show="!mobileOpen"
@@ -45,7 +49,6 @@
   class="
     navbar-nav
     order-3 w-full pb-6
-    overflow-y-auto max-h-[100dvh] overscroll-contain
     lg:order-1 lg:flex lg:w-auto lg:space-x-8 lg:pb-0
     lg:overflow-visible lg:max-h-none
     lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2
@@ -71,7 +74,7 @@
                   d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
               </svg>
             </button>
-            <ul class="nav-dropdown-list" x-show="open" x-transition x-cloak>
+            <ul class="nav-dropdown-list" x-show="open" x-cloak>
               {{ range .Children }}
                 {{ $childLink := .URL | relLangURL }}
                 <li class="nav-dropdown-item">
