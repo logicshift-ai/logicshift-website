@@ -8,7 +8,7 @@
 
       <!-- Text content -->
       <div class="w-full xl:w-1/2 text-center xl:text-left">
-        <h1 class="text-[#0E2A1F] dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-teal-400 dark:to-gray-400 text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-6">
+        <h1 class="text-primary dark:text-darkmode-primary text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-6">
           {{ .title | markdownify }}
         </h1>
         <p class="mb-8 text-xl">
@@ -44,14 +44,15 @@
 
 {{ with .Params.services }}
   {{ if .enable }}
-    <section class="section-sm bg-gradient">
+    <section class="section-sm bg-primary dark:bg-darkmode-primary">
       <div class="container">
         <!-- Section Header -->
         <div class="text-center mb-10">
-          <h2 class="mb-4">
+          <h2 class="mb-4 dark:text-[#0F1A17] text-light">
             {{ .title }}
           </h2>
-          <p class="text-lg">
+          <p class="text-lg mb-2 dark:text-[#0F1A17] text-light">
+            {{ .description }}
             {{ .content }}
           </p>
         </div>
@@ -67,7 +68,7 @@
               </div>
 
               <!-- Title & Description -->
-              <h3 class="mb-2 text-center">
+              <h3 class="mb-2 text-center dark:text-darkmode-text-light">
                 {{ .title }}
               </h3>
               <p class="relative mb-4 pl-6 text-center">
@@ -106,7 +107,7 @@
 
                     <!-- Content -->
                     <div>
-                      <h3 class="mb-2 text-center">
+                      <h3 class="mb-2 text-center dark:text-darkmode-text-light">
                         {{ .title }}
                       </h3>
                       <p class="text-center mb-4">
@@ -144,7 +145,12 @@
 
 <!-- Features -->
 {{ range $i, $e := .Params.features }}
-<section class="section-sm {{ if (modBool $i 2) }}bg-gradient{{ end }}">
+<section class="section-sm
+  {{ if modBool $i 2 }}
+    bg-[#F6F6EC] dark:bg-[#0F1A17]
+  {{ else }}
+    bg-[#EDF5DD] dark:bg-[#152720]
+  {{ end }}">
   <div class="container">
     <div class="grid md:grid-cols-2 items-center gap-10 md:gap-16 {{ if not (modBool $i 2) }}md:[&>*:first-child]:order-2{{ end }}">
 
@@ -162,11 +168,11 @@
 
       <!-- Feature Content -->
       <div>
-        <h2 class="tracking-tight text-gray-900 dark:text-white mb-4">
+        <h2 class="tracking-tight text-3xl font-bold text-[#0b3f2d] dark:text-[#B5D6B2] mb-4">
           {{ .title | markdownify }}
         </h2>
 
-        <p class="text-base lg:text-lg text-gray-900 dark:text-white mb-6">
+        <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">
           {{ .content | markdownify }}
         </p>
 
@@ -174,8 +180,8 @@
         <ul class="space-y-4">
           {{ range .bulletpoints }}
           <li class="flex items-start gap-3">
-            <i class="fa fa-check mt-1 text-primary"></i>
-            <span class="text-gray-800 dark:text-gray-200 leading-relaxed">{{ . | markdownify }}</span>
+            <i class="fa fa-check mt-1 text-[#45734A] dark:text-[#00FFAA]"></i>
+            <span class="text-gray-800 dark:text-gray-300 leading-relaxed">{{ . | markdownify }}</span>
           </li>
           {{ end }}
         </ul>
@@ -183,13 +189,14 @@
         <!-- CTA Button -->
         {{ with .button }}
         {{ if .enable }}
-        <a href="{{ .link | absURL }}" class="inline-flex items-center gap-2 btn btn-primary mt-8 group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+        <a href="{{ .link | absURL }}" class="inline-flex items-center gap-2 btn btn-primary mt-8 group focus:outline-none focus:ring-2 focus:ring-primary">
           {{ .label }}
           <i class="fa fa-arrow-right transition-transform group-hover:translate-x-1 duration-200"></i>
         </a>
         {{ end }}
         {{ end }}
       </div>
+
     </div>
   </div>
 </section>
@@ -199,9 +206,9 @@
 
 
 <section class="section-xs mt-0 overflow-hidden">
- <!-- Marquee Partial -->
- {{ partial "components/odoo-marquee.html" $ }}
+  {{ partial "components/odoo-marquee.html" $ }}
 </section>
+
 
 
 <!-- Testimonials -->

@@ -23,7 +23,7 @@
 
 /* Nav Link */
 .nav-link {
-  @apply text-text-dark hover:text-primary dark:text-darkmode-text-dark dark:hover:text-darkmode-primary block p-3 cursor-pointer font-semibold transition lg:px-2 lg:py-3;
+  @apply text-text hover:text-primary dark:text-darkmode-text dark:hover:text-darkmode-primary block p-3 cursor-pointer font-semibold transition lg:px-2 lg:py-3;
 }
 
 /* Highlight Active Dropdown Parent When Open */
@@ -73,7 +73,7 @@
 /* Dropdown Links */
 .nav-dropdown-link {
   @apply 
-    text-text-dark hover:text-primary 
+    text-black hover:text-primary 
     dark:text-darkmode-text dark:hover:text-darkmode-primary 
     block text-center py-1 font-semibold transition;
 }

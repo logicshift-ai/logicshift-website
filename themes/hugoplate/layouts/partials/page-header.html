@@ -1,9 +1,36 @@
-<section>
-  <div class="container text-center">
-    <div
-      class="from-body to-light dark:from-darkmode-body dark:to-darkmode-light rounded-2xl bg-gradient-to-b px-8 py-14">
-      <h1>{{ T (printf "%s" (lower .Title)) | default .Title | title }}</h1>
-      {{ partial "components/breadcrumb" (dict "Context" . "Class" "mt-6") }}
+<section class="relative isolate overflow-hidden py-10 sm:py-14">
+  <div class="container mx-auto px-4">
+    <div class="relative z-10 text-center max-w-2xl mx-auto">
+      <h1 class="text-3xl font-extrabold tracking-tight text-[{{ site.Params.theme.fonts.font_family.primary | default "Inter" }}] text-text-dark dark:text-darkmode-text-light sm:text-4xl">
+        {{ T (printf "%s" (lower .Title)) | default .Title | title }}
+      </h1>
+
+      {{ partial "components/breadcrumb" (dict "Context" . "Class" "mt-4 text-sm text-text-light dark:text-darkmode-text-light") }}
+    </div>
+  </div>
+
+  <!-- Decorative background matching primary colors -->
+  <div class="absolute inset-0 -z-10 flex items-center justify-center overflow-hidden">
+    <!-- Light Mode Background -->
+    <div class="block dark:hidden w-[60rem] h-[60rem] rounded-full opacity-20 blur-2xl"
+      style="
+        background: radial-gradient(
+          circle at center,
+          {{ site.Params.theme.colors.default.theme_color.primary | default "#45734A" }} 0%,
+          {{ site.Params.theme.colors.default.theme_color.light | default "#ffffff" }} 80%
+        );
+      ">
+    </div>
+
+    <!-- Dark Mode Background -->
+    <div class="hidden dark:block w-[60rem] h-[60rem] rounded-full opacity-20 blur-2xl"
+      style="
+        background: radial-gradient(
+          circle at center,
+          {{ site.Params.theme.colors.darkmode.theme_color.primary | default "#79A879" }} 0%,
+          {{ site.Params.theme.colors.darkmode.theme_color.body | default "#0F1A17" }} 80%
+        );
+      ">
     </div>
   </div>
 </section>

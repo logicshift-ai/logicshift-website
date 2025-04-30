@@ -7,7 +7,7 @@
         {{ $resizedWebp := $original.Resize "96x webp q95" }}
         {{ $resizedPng := $original.Resize "96x png q95" }}
 
-        <div class="shrink-0 flex items-center justify-center h-20 w-24 md:h-24 md:w-28 rounded-xl shadow-sm bg-[#EBF9F5] dark:bg-[#1f3d34] p-2">
+        <div class="shrink-0 flex items-center justify-center h-20 w-24 md:h-24 md:w-28 rounded-xl shadow-sm bg-white dark:bg-[#1f3d34] p-2">
           <picture>
             <source srcset="{{ $resizedWebp.RelPermalink }}" type="image/webp" />
             <img
@@ -28,7 +28,7 @@
         {{ $resizedWebp := $original.Resize "96x webp q95" }}
         {{ $resizedPng := $original.Resize "96x png q95" }}
 
-        <div class="shrink-0 flex items-center justify-center h-20 w-24 md:h-24 md:w-28 rounded-xl shadow-sm bg-[#EBF9F5] dark:bg-[#1f3d34] p-2">
+        <div class="shrink-0 flex items-center justify-center h-20 w-24 md:h-24 md:w-28 rounded-xl shadow-sm bg-white dark:bg-[#1f3d34] p-2">
           <picture>
             <source srcset="{{ $resizedWebp.RelPermalink }}" type="image/webp" />
             <img

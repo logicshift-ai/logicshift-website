@@ -1,4 +1,4 @@
-<footer class="bg-light dark:bg-darkmode-light">
+<footer class="bg-white dark:bg-[#243F2B]">
   <div class="container">
     <div class="row items-center py-10">
       <div class="lg:col-3 mb-8 text-center lg:mb-0 lg:text-left">
@@ -9,7 +9,7 @@
           {{ partial "logo" }}
         </a>
       </div>
-      <div class="lg:col-6 mb-8 text-center lg:mb-0">
+      <div class="lg:col-6 mb-8 text-center text-black dark:text-white lg:mb-0">
         <ul>
           {{ range site.Menus.footer }}
             <li class="m-3 inline-block">
@@ -62,7 +62,7 @@
 
   <div class="border-border dark:border-darkmode-border border-t py-7">
     <div
-      class="text-text-light dark:text-darkmode-text-light container text-center">
+      class="text-black dark:text-white container text-center">
       <p>
         {{ site.Params.copyright | markdownify }}
       </p>
