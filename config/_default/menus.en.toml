@@ -27,27 +27,32 @@ name = "Services"
 
 [[main]]
 parent = "Services"
-name = "Elements"
-url = "/elements"
+name = "Ecommerce Consulting" 
+url = "/404"
 
 [[main]]
 parent = "Services"
-name = "Contact"
-url = "/contact"
+name = "Odoo Support"
+url = "/404"
 
 [[main]]
 parent = "Services"
-name = "Authors"
-url = "/authors"
+name = "Platform Migrations"
+url = "/404"
 
 [[main]]
 parent = "Services"
-name = "Categories"
-url = "/categories"
+name = "Automation & AI"
+url = "/404"
 
 [[main]]
 parent = "Services"
-name = "404 Page"
+name = "Business Software Training"
+url = "/404"
+
+[[main]]
+parent = "Services"
+name = "Custom Solutions"
 url = "/404"
 
 
@@ -63,11 +68,6 @@ url = "/about"
 weight = 2
 
 [[footer]]
-name = "Elements"
-url = "/elements"
-weight = 3
-
-[[footer]]
 name = "Privacy Policy"
 url = "/privacy-policy"
-weight = 4
+weight = 3
