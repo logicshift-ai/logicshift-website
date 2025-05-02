@@ -2,54 +2,47 @@
   {{ partial "page-header" . }}
 
   <section class="bg-white dark:bg-[#0F1A17] py-16">
-    <div class="container mx-auto px-6">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center space-y-16">
 
-      <!-- Hero Section (Image + Subtitle Only) -->
-      <div class="max-w-3xl mx-auto text-center">
-        {{ with .Params.image }}
-          {{ partial "image" (dict 
+      <!-- Optional Hero Image -->
+      {{ with .Params.image }}
+        <div class="flex justify-center w-full">
+          {{ partial "image" (dict
             "Src" . 
             "Context" $.Page 
             "Alt" $.Title 
-            "Class" "mx-auto mb-6 rounded-full shadow-md" 
+            "Class" "rounded-full shadow-md" 
             "Size" "200x200") 
           }}
-        {{ end }}
-
-        {{ with .Params.subtitle }}
-          <p class="mb-4 text-center">
-            {{ . }}
-          </p>
-        {{ end }}
-      </div>
-
-      <!-- Main Markdown Body -->
-      <div class="mt-10">
-        <div class="prose prose-lg dark:prose-invert  mx-auto text-justify">
-          {{ .Content }}
         </div>
-      </div>
+      {{ end }}
 
-      <!-- Optional Grid Content Sections -->
+      <!-- Sections Grid (same behavior as before) -->
       {{ with .Params.sections }}
-        <div class="grid gap-10 mt-16 md:grid-cols-2 max-w-5xl mx-auto text-gray-800 dark:text-gray-200">
-          {{ range . }}
-            <div class="bg-gray-50 dark:bg-[#13211d] p-6 rounded-2xl shadow-md hover:shadow-lg transition">
-              <h2 class="text-2xl font-semibold text-primary mb-3">{{ .title }}</h2>
+        <div class="w-full max-w-6xl">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {{ range . }}
+              <div class="bg-[#f6f6ec] dark:bg-[#1C2E27] p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                <h2 class="text-2xl font-bold text-primary dark:text-darkmode-primary mb-4">
+                  {{ .title }}
+                </h2>
 
-              {{ with .content }}
-                <p class="leading-relaxed">{{ . | markdownify }}</p>
-              {{ end }}
+                {{ with .content }}
+                  <div class="text-base leading-relaxed space-y-4">
+                    {{ . | markdownify }}
+                  </div>
+                {{ end }}
 
-              {{ with .list }}
-                <ul class="list-disc pl-5 space-y-2 mt-2">
-                  {{ range . }}
-                    <li>{{ . }}</li>
-                  {{ end }}
-                </ul>
-              {{ end }}
-            </div>
-          {{ end }}
+                {{ with .list }}
+                  <ul class="list-disc pl-5 space-y-2 mt-4">
+                    {{ range . }}
+                      <li>{{ . }}</li>
+                    {{ end }}
+                  </ul>
+                {{ end }}
+              </div>
+            {{ end }}
+          </div>
         </div>
       {{ end }}
 
