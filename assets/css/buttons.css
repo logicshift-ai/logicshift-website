@@ -11,5 +11,5 @@
 }
 
 .btn-outline-primary {
-  @apply border-dark text-text-dark hover:bg-primary dark:hover:text-text-dark bg-transparent hover:text-white dark:border-darkmode-primary dark:text-white dark:hover:bg-darkmode-primary;
+  @apply border-dark text-text-dark hover:bg-primary dark:hover:text-dark bg-transparent hover:text-white dark:border-darkmode-primary dark:text-white dark:hover:bg-darkmode-primary;
 }

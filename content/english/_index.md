@@ -39,7 +39,7 @@ services:
         label: "See Migration Solutions"
         link: "/"
 
-    - icon: "fa-boxes"
+    - icon: "fa-robot"
       title: "Automation & AI"
       description: "Streamline inventory, fulfillment, and logistics using automated workflows."
       button:
@@ -47,7 +47,7 @@ services:
         label: "Discover Automation & AI"
         link: "/"
 
-    - icon: "fa-graduation-cap"
+    - icon: "fa-chalkboard-user"
       title: "Business Software Training"
       description: "Equip your team with the skills to confidently use your business tools and systems."
       button:
@@ -55,7 +55,7 @@ services:
         label: "Explore Training Programs"
         link: "/"
 
-    - icon: "fa-cogs"
+    - icon: "fa-screwdriver-wrench"
       title: "Custom Solutions"
       description: "Tailor Odoo apps to match your exact workflows and business requirements."
       button:

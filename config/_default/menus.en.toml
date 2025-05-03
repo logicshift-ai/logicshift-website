@@ -27,33 +27,39 @@ name = "Services"
 
 [[main]]
 parent = "Services"
-name = "Ecommerce Consulting" 
+name = "Ecommerce Consulting"
 url = "/404"
+pre = "fa-solid fa-cart-shopping"
 
 [[main]]
 parent = "Services"
 name = "Odoo Support"
 url = "/404"
+pre = "fa-solid fa-life-ring"
 
 [[main]]
 parent = "Services"
 name = "Platform Migrations"
 url = "/404"
+pre = "fa-solid fa-right-left"
 
 [[main]]
 parent = "Services"
 name = "Automation & AI"
 url = "/404"
+pre = "fa-solid fa-robot"
 
 [[main]]
 parent = "Services"
 name = "Business Software Training"
 url = "/404"
+pre = "fa-solid fa-chalkboard-user"
 
 [[main]]
 parent = "Services"
 name = "Custom Solutions"
 url = "/404"
+pre = "fa-solid fa-screwdriver-wrench"
 
 
 # footer menu
