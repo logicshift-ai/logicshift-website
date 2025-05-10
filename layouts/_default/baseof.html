@@ -36,17 +36,10 @@
     {{ partial "search-modal.html" (dict "Context" . ) }}
 
 
-    {{ $disableBarba := or .Params.no_barba .IsPage }}
-    {{ if not $disableBarba }}
-      <main data-barba="container"
-            {{ with .File }}data-barba-namespace="{{ .BaseFileName }}"{{ end }}>
-        {{ block "main" . }}{{ end }}
-      </main>
-    {{ else }}
-      <main>
-        {{ block "main" . }}{{ end }}
-      </main>
-    {{ end }}
+    <main data-barba="container" data-barba-namespace="{{ .Section | default "home" }}-{{ .Kind | default "page" }}">
+      {{ block "main" . }}{{ end }}
+    </main>
+    
     
   
     
