@@ -1,28 +1,24 @@
 ############# English navigation ##############
 
 # main menu
-[[main]]
-name = "Home"
-url = "/"
-weight = 1
 
 [[main]]
 name = "Odoo"
 url = "/odoo"
-weight = 2
+weight = 1
 
 [[main]]
 name = "Blog"
 url = "/blog"
-weight = 3
+weight = 2
 
 [[main]]
 name = "About"
 url = "/about"
-weight = 4
+weight = 3
 
 [[main]]
-weight = 5
+weight = 4
 name = "Services"
 
 [[main]]

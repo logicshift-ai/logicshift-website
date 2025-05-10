@@ -21,7 +21,7 @@ services:
       button:
         enable: true
         label: "Explore Ecommerce Consulting"
-        link: "/"
+        link: "/404"
 
     - icon: "fa-life-ring"
       title: "Odoo Support"
@@ -29,7 +29,7 @@ services:
       button:
         enable: true
         label: "Learn About Odoo Support"
-        link: "/"
+        link: "/404"
 
     - icon: "fa-exchange-alt"
       title: "Platform Migrations"
@@ -37,7 +37,7 @@ services:
       button:
         enable: true
         label: "See Migration Solutions"
-        link: "/"
+        link: "/404"
 
     - icon: "fa-robot"
       title: "Automation & AI"
@@ -45,7 +45,7 @@ services:
       button:
         enable: true
         label: "Discover Automation & AI"
-        link: "/"
+        link: "/404"
 
     - icon: "fa-chalkboard-user"
       title: "Business Software Training"
@@ -53,7 +53,7 @@ services:
       button:
         enable: true
         label: "Explore Training Programs"
-        link: "/"
+        link: "/404"
 
     - icon: "fa-screwdriver-wrench"
       title: "Custom Solutions"
@@ -61,7 +61,7 @@ services:
       button:
         enable: true
         label: "View Custom Solutions"
-        link: "/"
+        link: "/404"
 
 
 # Features
@@ -77,7 +77,7 @@ features:
     button:
       enable: true
       label: "Learn More"
-      link: ""
+      link: "/odoo"
 
   - title: "Smart Business Solutions Built with Odoo"
     image: "/images/smb.png"
@@ -89,7 +89,7 @@ features:
     button:
       enable: true
       label: "Explore Solutions"
-      link: ""
+      link: "/404"
 
   - title: "Why Choose LogicShift as Your Odoo Partner"
     image: "/images/whyus.png"
@@ -101,6 +101,6 @@ features:
     button:
       enable: true
       label: "Our Process"
-      link: ""
+      link: "/404"
   
 ---
